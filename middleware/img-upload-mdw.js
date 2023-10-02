@@ -2,7 +2,7 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/'); // Specifica la cartella di destinazione
+    cb(null, './assets/paper-covers'); // Specifica la cartella di destinazione
   },
   filename: (req, file, cb) => {
     console.log('filename')
