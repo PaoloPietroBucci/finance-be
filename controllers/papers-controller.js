@@ -26,7 +26,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
                       title : req.body.title,
                       abstract : req.body.abstract,
                       text : req.body.text,
-                      imgUrl :' https://test-financeapp-be.onrender.com'+ req.file.filename,
+                      imgUrl :' https://test-financeapp-be.onrender.com' + '/paper-covers/'+ req.file.filename,
                       categories : req.body.categories,
                       date : req.body.date,
                       author : req.body.author
