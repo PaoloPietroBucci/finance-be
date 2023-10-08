@@ -5,9 +5,10 @@ const storage = multer.diskStorage({
     cb(null, './assets/paper-covers'); // Specifica la cartella di destinazione
   },
   filename: (req, file, cb) => {
-    console.log('filename')
-    cb(null,  new Date().toISOString().replace(/:/g, '-')+ file.originalname); // Rinomina il file
+    cb(null,  new Date().toISOString().replace(/:/g, '-') + file.originalname); // Rinomina il file
   },
 })
 
-module.exports = {storage};
+const upload = multer({ storage: storage})
+
+module.exports = upload

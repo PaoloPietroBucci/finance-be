@@ -8,9 +8,11 @@ router.get('/all', async (req, res) => {
   res.json(data)
 })
 
-router.get('/:id', async (req, res) => {
-  res.json(await repository.getById(req.params.id))
+router.post('/upload', async(req, res)=>{
+  repository.save(req.body)
+  res.type("application/json");
+  res.status(200);
+  res.json({message : 'Word Saved'})
 })
-
 
 module.exports = router

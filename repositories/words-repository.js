@@ -1,17 +1,23 @@
 const Word = require('../models/words-model').Word;
-require ('../db-connection');
+const {dbConn , closeConn} = require ('../db-connection');
 
 async function save(newWord){
-    await newWord.save()
-        .then(()=>'articolo salvato')
-        .catch(()=>'qualcosa è andato storto nel salvataggio del vocabolo')
+    dbConn()
+    word = new Word(newWord)
+    await word.save()
+    closeConn()
 }
 async function getById(id){
-    return await Paper.findOne({_id : id})
+    dbConn()
+    const word = await Word.findOne({_id : id})
+    closeConn()
  
 }
 async function getAll(){
-        return await Word.find()
+    dbConn()
+    const words = await Word.find()
+    closeConn()
+    return words
 }
 
 module.exports = {save, getById, getAll};
